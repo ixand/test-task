@@ -7,9 +7,9 @@ namespace FindPath.Tests
     public class Tests
     {
         [Test]
-        public void FindShortestPath_EmptyArray_ReturnsDirectPath()
+        public void FindShortestPath_Emptystatic_array_ReturnsDirectPath()
         {
-            int[,] arr = new int[4, 4]
+            int[,] static_arr = new int[4, 4]
             {
                 {0,0,0,0},
                 {0,0,0,0},
@@ -17,18 +17,30 @@ namespace FindPath.Tests
                 {0,0,0,0}
             };
 
+            //var expectedResult = new[]
+            //{
+            //    new Point(0,0),
+            //    new Point(0,1),
+            //    new Point(1,1),
+            //    new Point(1,2),
+            //    new Point(2,2),
+            //    new Point(2,3),
+            //    new Point(3,3)
+            //};
+
+
             var expectedResult = new[]
             {
                 new Point(0,0),
                 new Point(0,1),
-                new Point(1,1),
-                new Point(1,2),
-                new Point(2,2),
+                new Point(0,2),
+                new Point(0,3),
+                new Point(1,3),
                 new Point(2,3),
                 new Point(3,3)
             };
 
-            var actualResult = Program.FindShortestPath(arr);
+            var actualResult = Program.FindShortestPath(static_arr);
 
             Assert.IsNotNull(actualResult);
             Assert.That(actualResult.Length, Is.EqualTo(expectedResult.Length));
@@ -40,9 +52,9 @@ namespace FindPath.Tests
         }
 
         [Test]
-        public void FindShortestPath_UniformArray_ReturnsDirectPath()
+        public void FindShortestPath_Uniformstatic_array_ReturnsDirectPath()
         {
-            int[,] arr = new int[4, 4]
+            int[,] static_arr = new int[4, 4]
             {
                 {1,1,1,1},
                 {1,1,1,1},
@@ -58,7 +70,7 @@ namespace FindPath.Tests
                 new Point(3,3)
             };
 
-            var actualResult = Program.FindShortestPath(arr);
+            var actualResult = Program.FindShortestPath(static_arr);
 
             Assert.IsNotNull(actualResult);
             Assert.That(actualResult.Length, Is.EqualTo(expectedResult.Length));
@@ -70,9 +82,9 @@ namespace FindPath.Tests
         }
 
         [Test]
-        public void FindShortestPath_MixedArray_ReturnsShortestPath()
+        public void FindShortestPath_Mixedstatic_array_ReturnsShortestPath()
         {
-            int[,] arr = new int[4, 4]
+            int[,] static_arr = new int[4, 4]
             {
                 {1,1,0,1},
                 {1,1,0,1},
@@ -80,17 +92,25 @@ namespace FindPath.Tests
                 {1,1,1,1}
             };
 
+            //var expectedResult = new[]
+            //{
+            //    new Point(0,0),
+            //    new Point(1,1),
+            //    new Point(1,2),
+            //    new Point(1,3),
+            //    new Point(2,3),
+            //    new Point(3,3)
+            //};
+
             var expectedResult = new[]
-            {
+           {
                 new Point(0,0),
                 new Point(1,1),
-                new Point(1,2),
-                new Point(1,3),
-                new Point(2,3),
+                new Point(2,2),
                 new Point(3,3)
             };
 
-            var actualResult = Program.FindShortestPath(arr);
+            var actualResult = Program.FindShortestPath(static_arr);
 
             Assert.IsNotNull(actualResult);
             Assert.That(actualResult.Length, Is.EqualTo(expectedResult.Length));
